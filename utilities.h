@@ -11,6 +11,8 @@ namespace scheduler
 	public:
 		std::chrono::time_point<std::chrono::system_clock>
 			stotp(const std::string& time);
+
+		char* stoc(const std::string& str) const;
 	};
 
 	extern utils ut;

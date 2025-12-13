@@ -1,5 +1,6 @@
 #include<iostream>
 #include<chrono>
+#include<string>
 
 #include"utilities.h"
 
@@ -43,6 +44,18 @@ namespace scheduler
 		
 		return std::chrono::time_point_cast<std::chrono::system_clock::duration>(tp);
 
+	}
+
+	char* utils::stoc(const std::string& str) const
+	{
+		char* path = new char[str.length() + 1];
+		int i = 0;
+		for (auto ch : str)
+		{
+			path[i++] = ch;
+		}
+		path[str.length()] = '\0';
+		return path;
 	}
 
 }

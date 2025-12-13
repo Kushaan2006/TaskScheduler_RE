@@ -9,9 +9,9 @@
 
 namespace scheduler
 {
-	void Sched::newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type)
+	void Sched::newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path)
 	{
-		Task obj(task, msg, time, type);
+		Task obj(task, msg, time, type, path);
 		tasks.push_back(std::move(obj));
 		auto& it = tasks.back();
 		it.threadIt();

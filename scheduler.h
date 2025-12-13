@@ -15,7 +15,7 @@ namespace scheduler
 		std::deque<Task> tasks;
 		
 	public:
-		void newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type);
+		void newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path);
 		void exeAllTask();
 		void setStopper();
 		~Sched();

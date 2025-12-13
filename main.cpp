@@ -27,14 +27,19 @@ int main()
 		if (sel == 1)
 		{
 			system("cls"); //replace later
-			string task_name, task_msg, task_time; int type;
+			string task_name, task_msg, task_time, task_path; int type;
 			cout << "Enter Task Name: "; getline(cin, task_name);
 			cout << "Enter Task Msg: "; getline(cin, task_msg);
 			cout << "Enter Task Time: "; getline(cin, task_time);
 			cout << "Enter Task Type: "; cin >> type;
 			cin.ignore();
+			if (type == 2)
+			{
+				cout << "Enter Path: "; getline(cin, task_path);
+			}
+			else task_path = "";
 
-			s.newTask(task_name, task_msg, task_time, type);
+			s.newTask(task_name, task_msg, task_time, type, task_path);
 		}
 		else if (sel == -1)
 		{
