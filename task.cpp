@@ -78,6 +78,18 @@ namespace scheduler
 			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
 			std::cout << std::endl;
 		}
+		else if (m_task_type == 3)
+		{
+			std::cout << std::endl;
+			std::cout << "Task Name: " << m_task_name << std::endl;
+			std::cout << "Task Msg : " << m_task_msg << std::endl;
+			std::cout << "Task Type: " << m_task_type << std::endl;
+
+
+			std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;
+			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
+			std::cout << std::endl;
+		}
 
 
 		

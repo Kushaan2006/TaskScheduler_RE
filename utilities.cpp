@@ -37,12 +37,35 @@ namespace scheduler
 			std::chrono::month { static_cast<unsigned>(month) }, 
 			std::chrono::day{ static_cast<unsigned>(day) } };
 
-		std::chrono::sys_days date{ ymd };
+		/*std::chrono::sys_days date{ ymd };
 
 		std::chrono::sys_time<std::chrono::minutes> tp 
 			= date + std::chrono::hours{ hour } + std::chrono::minutes{ minute };
+
+		auto tz = std::chrono::current_zone();
+		std::chrono::zoned_time local_zt{ tz, tp };
+
+		std::chrono::sys_time<std::chrono::minutes> tp_utc =
+			std::chrono::floor<std::chrono::minutes>(local_zt.get_sys_time());
+
+
 		
-		return std::chrono::time_point_cast<std::chrono::system_clock::duration>(tp);
+		return std::chrono::time_point_cast<std::chrono::system_clock::duration>(tp_utc);*/
+
+
+		//converting local time to utc
+		std::chrono::local_days date{ ymd };
+
+		std::chrono::local_time<std::chrono::minutes> local_tp
+			= date + std::chrono::hours{ hour } + std::chrono::minutes{ minute };
+
+		const std::chrono::time_zone* tz = std::chrono::current_zone();
+		std::chrono::zoned_time local_zt{ tz, local_tp };
+
+		std::chrono::time_point<std::chrono::system_clock> tp_utc =
+			std::chrono::floor<std::chrono::system_clock::duration>( local_zt.get_sys_time());
+
+		return tp_utc;
 
 	}
 
