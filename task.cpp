@@ -5,6 +5,7 @@
 #include<thread>
 #include<mutex>
 #include<string>
+#include<fstream>
 
 #include"task.h"
 #include"utilities.h"
@@ -17,8 +18,8 @@ namespace scheduler
 
 	utils ut;
 
-	Task::Task(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path)
-		:m_task_name(task), m_task_msg(msg), m_task_type(type)
+	Task::Task(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path, const int& task_id)
+		:m_task_name(task), m_task_msg(msg), m_task_type(type), m_task_complete(0), m_task_id(task_id)
 	{
 		m_exe_path = ut.stoc(path);
 		setThreadStatus(0);
@@ -78,7 +79,7 @@ namespace scheduler
 			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
 			std::cout << std::endl;
 		}
-		else if (m_task_type == 3)
+		/*else if (m_task_type == 3)
 		{
 			std::cout << std::endl;
 			std::cout << "Task Name: " << m_task_name << std::endl;
@@ -89,10 +90,18 @@ namespace scheduler
 			std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;
 			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
 			std::cout << std::endl;
-		}
+		}*/
 
-
+		m_task_complete = 1;
 		
+	}
+
+	void Task::write(std::ofstream& out) const
+	{
+
+		out << m_task_complete << "," << m_task_complete << "," << m_task_name << ","
+			<< m_task_msg << "," << m_exe_path << "," << m_task_type << "," << m_exe_time << "\n";
+
 	}
 
 	void Task::setThreadStatus(const int& n)

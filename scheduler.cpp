@@ -2,6 +2,7 @@
 #include<chrono>
 #include<thread>
 #include<vector>
+#include<fstream>
 
 #include"task.h"
 #include"scheduler.h"
@@ -9,9 +10,12 @@
 
 namespace scheduler
 {
+	int Sched::task_id_track = 0;
+
 	void Sched::newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path)
 	{
-		Task obj(task, msg, time, type, path);
+
+		Task obj(task, msg, time, type, path, ++task_id_track);
 		tasks.push_back(std::move(obj));
 		auto& it = tasks.back();
 		it.threadIt();
@@ -41,8 +45,24 @@ namespace scheduler
 		}
 	}
 
+	void Sched::saveTasks()
+	{
+		std::ofstream fout("automator_save_state.txt");
+
+		if (!fout)
+			return;
+
+		for (const auto& it : tasks)
+		{
+			it.write(fout);
+		}
+
+		fout.close();
+	}
+
 	Sched::~Sched()
 	{
+		saveTasks();
 		setStopper();
 	}
 

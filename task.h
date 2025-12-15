@@ -3,13 +3,15 @@
 
 #include<iostream>
 #include<chrono>
-
+#include<fstream>
 
 namespace scheduler
 {
 	class Task
 	{
 		int m_thread_status{};
+		int m_task_complete{};
+		int m_task_id{};
 		std::thread m_t{};
 
 		std::string m_task_name{};
@@ -28,7 +30,8 @@ namespace scheduler
 			const std::string& msg = "!!NO MSG!!",
 			const std::string& time = "",
 			const int& type = 1,
-			const std::string& path = ""
+			const std::string& path = "",
+			const int& task_id=-1
 		);
 
 		Task(Task& obj) = delete;
@@ -44,6 +47,8 @@ namespace scheduler
 		void threadIt();
 
 		void joinIt();
+		
+		void write(std::ofstream& obj) const;
 
 		~Task();
 	};
