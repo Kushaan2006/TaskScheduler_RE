@@ -16,11 +16,13 @@ namespace scheduler
 		static int task_id_track;
 		
 	public:
-		void newTask(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path);
+		Sched();
+		void newTask(const std::string task, const std::string msg, const std::string time, const int type, const std::string path);
 		void exeAllTask();
 		void setStopper();
 		void saveTasks();
-		void firstExe();
+		void loadTasks();
+		void stop();
 		~Sched();
 	};
 }

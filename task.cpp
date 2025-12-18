@@ -19,14 +19,14 @@ namespace scheduler
 	utils ut;
 
 	Task::Task(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path, const int& task_id)
-		:m_task_name(task), m_task_msg(msg), m_task_type(type), m_task_complete(0), m_task_id(task_id)
+		:m_task_name(task), m_task_msg(msg), m_task_type(type), m_task_complete(0), m_task_id(task_id), m_exe_str_time(time)
 	{
 		m_exe_path = ut.stoc(path);
 		setThreadStatus(0);
 		if (time == "")
 		{
 			m_exe_time = std::chrono::system_clock::now() + std::chrono::seconds(10);
-
+			m_exe_str_time = std::format("{:%Y-%m-%d %H:%M}", m_exe_time);
 		}
 		else
 		{
@@ -99,8 +99,13 @@ namespace scheduler
 	void Task::write(std::ofstream& out) const
 	{
 
-		out << m_task_complete << "," << m_task_complete << "," << m_task_name << ","
-			<< m_task_msg << "," << m_exe_path << "," << m_task_type << "," << m_exe_time << "\n";
+		out << m_task_id <<","
+			<< m_task_complete << "," 
+			<< m_task_name << ","
+			<< m_task_msg << "," 
+			<< m_exe_path << "," 
+			<< m_task_type << "," 
+			<< m_exe_str_time << "\n";
 
 	}
 
@@ -134,11 +139,13 @@ namespace scheduler
 
 		this->m_thread_status = std::move(obj.m_thread_status);
 		this->m_t = std::move(obj.m_t);
+		this->m_task_id = std::move(obj.m_task_id);
 		this->m_task_name = std::move(obj.m_task_name);
 		this->m_task_msg = std::move(obj.m_task_msg);
 		this->m_exe_path = std::move(obj.m_exe_path);
 		this->m_task_type = std::move(obj.m_task_type);
 		this->m_exe_time = std::move(obj.m_exe_time);
+		this->m_exe_str_time = std::move(obj.m_exe_str_time);
 		obj.m_exe_path = nullptr;
 
 	}
@@ -150,11 +157,13 @@ namespace scheduler
 			delete[] this->m_exe_path;
 			this->m_thread_status = std::move(obj.m_thread_status);
 			this->m_t = std::move(obj.m_t);
+			this->m_task_id = std::move(obj.m_task_id);
 			this->m_task_name = std::move(obj.m_task_name);
 			this->m_task_msg = std::move(obj.m_task_msg);
 			this->m_exe_path = std::move(obj.m_exe_path);
 			this->m_task_type = std::move(obj.m_task_type);
 			this->m_exe_time = std::move(obj.m_exe_time);
+			this->m_exe_str_time = std::move(obj.m_exe_str_time);
 			obj.m_exe_path = nullptr;
 		}
 

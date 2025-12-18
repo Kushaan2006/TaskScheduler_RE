@@ -21,6 +21,7 @@ int main()
 		int sel;
 		cout << "1.) Add Task" << endl;
 		cout << "2.) Exit" << endl;
+		cout << "3.) Exit without Output (Saves task)" << endl;
 		cout << "Input: "; cin >> sel;
 		cin.ignore();
 
@@ -43,6 +44,11 @@ int main()
 		}
 		else if (sel == -1)
 		{
+			break;
+		}
+		else if (sel == 3)
+		{
+			s.stop();
 			break;
 		}
 		else

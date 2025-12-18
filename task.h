@@ -4,6 +4,8 @@
 #include<iostream>
 #include<chrono>
 #include<fstream>
+#include<string>
+
 
 namespace scheduler
 {
@@ -19,6 +21,7 @@ namespace scheduler
 		char* m_exe_path{};
 		int m_task_type{};
 
+		std::string m_exe_str_time;
 		std::chrono::time_point<std::chrono::system_clock> m_exe_time;
 
 	public:
@@ -30,7 +33,7 @@ namespace scheduler
 			const std::string& msg = "!!NO MSG!!",
 			const std::string& time = "",
 			const int& type = 1,
-			const std::string& path = "",
+			const std::string& path = "" ,
 			const int& task_id=-1
 		);
 
