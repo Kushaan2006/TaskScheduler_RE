@@ -93,6 +93,7 @@ namespace scheduler
 		}*/
 
 		m_task_complete = 1;
+
 		
 	}
 

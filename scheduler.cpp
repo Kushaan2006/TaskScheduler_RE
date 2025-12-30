@@ -29,6 +29,60 @@ namespace scheduler
 		
 		auto& it = tasks.back();
 		it.threadIt();
+
+		saveTasks();
+	}
+
+	void Sched::listAll()
+	{
+		while (1)
+		{
+			std::cout << "All Current Tasks" << std::endl << std::endl;
+			std::cout << "No.   Task Name     Task Msg      Task Status" << std::endl;
+
+			int counter = 1;
+			for (auto& it : tasks)
+			{
+				if (it.getTime() < std::chrono::system_clock::now())
+				{
+					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "EXPIRED" << std::endl;
+				}
+				else if (it.getStatus() == 0)
+				{
+					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "PENDING" << std::endl;
+				}
+				else if (it.getStatus() == 1)
+				{
+					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "COMPLETED" << std::endl;
+				}
+			}
+
+			/*getchar();*/
+			char ch;
+			std::cout << "Do you want to delete? (Y/N): ";
+			std::cin >> ch;
+
+			//cant delete rn, need to learn thread deletion
+			if (ch == 'y' || ch == 'Y')
+			{
+				int id;
+				std::cout << "Enter the task to delete: ";
+				std::cin >> id;
+
+				/*if (id > tasks.size() || id < 0)
+				{
+					std::cout << "ERROR: CANT DELETE, OUT OF BOUNDS" << std::endl;
+				}
+				else
+				{
+					tasks.erase(tasks.begin() + (id - 1));
+				}*/
+			}
+			else
+				break;
+
+			system("cls");
+		}
 	}
 
 	void Sched::exeAllTask()

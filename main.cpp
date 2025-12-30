@@ -22,6 +22,7 @@ int main()
 		cout << "1.) Add Task" << endl;
 		cout << "2.) Exit" << endl;
 		cout << "3.) Exit without Output (Saves task)" << endl;
+		cout << "4.) List All" << endl;
 		cout << "Input: "; cin >> sel;
 		cin.ignore();
 
@@ -41,6 +42,10 @@ int main()
 			else task_path = "";
 
 			s.newTask(task_name, task_msg, task_time, type, task_path);
+		}
+		else if (sel == 4)
+		{
+			s.listAll();
 		}
 		else if (sel == -1)
 		{

@@ -5,7 +5,9 @@
 #include<chrono>
 #include<fstream>
 #include<string>
+#include <thread>
 
+//#include"scheduler.h"
 
 namespace scheduler
 {
@@ -43,6 +45,10 @@ namespace scheduler
 		Task(Task&& obj) noexcept;
 		Task& operator=(Task&& obj) noexcept;
 
+		std::string getName() { return m_task_name; }
+		std::string getMsg() { return m_task_msg;  }
+		int getStatus() { return m_task_complete;  }
+		auto getTime() { return m_exe_time;  }
 
 		void setThreadStatus(const int& n = 0);
 

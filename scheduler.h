@@ -2,9 +2,9 @@
 #define SCHEDULER_SCHEDULER_H
 
 #include<deque>
+#include <string>
 
 #include"task.h"
-#include"scheduler.h"
 #include"utilities.h"
 
 
@@ -23,6 +23,7 @@ namespace scheduler
 		void saveTasks();
 		void loadTasks();
 		void stop();
+		void listAll();
 		~Sched();
 	};
 }
