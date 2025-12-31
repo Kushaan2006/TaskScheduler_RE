@@ -1,3 +1,10 @@
+/*
+	Task Scheduler
+	Author: Kushaan Vir Singh
+	Personal project for learning C++ multithreading and scheduling.
+*/
+
+
 #ifndef TASK_SCHEDULER_H
 #define TASK_SCHEDULER_H
 

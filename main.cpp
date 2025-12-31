@@ -1,3 +1,9 @@
+/*
+	Task Scheduler
+	Author: Kushaan Vir Singh
+	Personal project for learning C++ multithreading and scheduling.
+*/
+
 #include<iostream>
 #include <string>
 #include<thread>
