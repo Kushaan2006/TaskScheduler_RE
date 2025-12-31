@@ -5,6 +5,7 @@
 #include<fstream>
 #include<string>
 #include<sstream>
+#include<iomanip>
 
 #include"task.h"
 #include"scheduler.h"
@@ -33,55 +34,93 @@ namespace scheduler
 		saveTasks();
 	}
 
+
+	//yet to implement, cant delete tasks yet
 	void Sched::listAll()
 	{
+		system("cls");
+
+
 		while (1)
 		{
-			std::cout << "All Current Tasks" << std::endl << std::endl;
-			std::cout << "No.   Task Name     Task Msg      Task Status" << std::endl;
+			/*std::cout << "All Current Tasks" << std::endl << std::endl;
+			std::cout << "No.   Task Name     Task Msg      Task Status" << std::endl;*/
+
+			std::cout << "                   ALL LOADED TASKS                  " << std::endl;
+			std::cout << "+----+----------------+----------------+------------+" << std::endl;
+
+			if (this->getTasksSize() == 0)
+			{
+				std::cout << "                   NO TASKS AVAILABLE                  " << std::endl;
+				std::cout << "+----+----------------+----------------+------------+" << std::endl;
+				getchar();
+				break;
+			}
 
 			int counter = 1;
 			for (auto& it : tasks)
 			{
-				if (it.getTime() < std::chrono::system_clock::now())
+
+				std::string name, msg, status;
+				name = it.getName(); 
+				msg = it.getMsg();
+				if (it.getStatus() == 1)
 				{
-					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "EXPIRED" << std::endl;
+					/*std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "COMPLETED" << std::endl;*/
+					status = "COMPLETED";
 				}
 				else if (it.getStatus() == 0)
 				{
-					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "PENDING" << std::endl;
+					/*std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "PENDING" << std::endl;*/
+					status = "PENDING";
 				}
-				else if (it.getStatus() == 1)
+				
+				else if (it.getTime() < std::chrono::system_clock::now())
 				{
-					std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "COMPLETED" << std::endl;
+					/*std::cout << counter++ << "    " << it.getName() << "    " << it.getMsg() << "     " << "EXPIRED" << std::endl;*/
+					status = "EXPIRED";
 				}
+
+
+				std::cout << "| " << std::left << std::setw(2) << counter++
+					<< " | " << std::setw(14) << name
+					<< " | " << std::setw(14) << msg
+					<< " | " << std::setw(9) << status
+					<< " |" << std::endl;
+
 			}
 
-			/*getchar();*/
-			char ch;
-			std::cout << "Do you want to delete? (Y/N): ";
-			std::cin >> ch;
+			std::cout << "+----+----------------+----------------+------------+" << std::endl;
 
+			getchar();
+			
+			break;
 			//cant delete rn, need to learn thread deletion
-			if (ch == 'y' || ch == 'Y')
-			{
-				int id;
-				std::cout << "Enter the task to delete: ";
-				std::cin >> id;
 
-				/*if (id > tasks.size() || id < 0)
-				{
-					std::cout << "ERROR: CANT DELETE, OUT OF BOUNDS" << std::endl;
-				}
-				else
-				{
-					tasks.erase(tasks.begin() + (id - 1));
-				}*/
-			}
-			else
-				break;
+			//char ch;
+			//std::cout << "Do you want to delete? (Y/N): ";
+			//std::cin >> ch;
 
-			system("cls");
+			//
+			//if (ch == 'y' || ch == 'Y')
+			//{
+			//	int id;
+			//	std::cout << "Enter the task to delete: ";
+			//	std::cin >> id;
+
+			//	/*if (id > tasks.size() || id < 0)
+			//	{
+			//		std::cout << "ERROR: CANT DELETE, OUT OF BOUNDS" << std::endl;
+			//	}
+			//	else
+			//	{
+			//		tasks.erase(tasks.begin() + (id - 1));
+			//	}*/
+			//}
+			//else
+			//	break;
+
+			//system("cls");
 		}
 	}
 

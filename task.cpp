@@ -16,6 +16,8 @@ namespace scheduler
 
 	std::mutex m;
 
+
+
 	utils ut;
 
 	Task::Task(const std::string& task, const std::string& msg, const std::string& time, const int& type, const std::string& path, const int& task_id)
@@ -42,7 +44,7 @@ namespace scheduler
 		if (m_exe_time < std::chrono::system_clock::now())
 		{
 			std::cout << "Task Expired!" << std::endl;
-
+			m_task_complete = 1;
 			return;
 		}
 
@@ -79,6 +81,7 @@ namespace scheduler
 			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
 			std::cout << std::endl;
 		}
+		//yet to implement
 		/*else if (m_task_type == 3)
 		{
 			std::cout << std::endl;
@@ -147,6 +150,7 @@ namespace scheduler
 		this->m_task_type = std::move(obj.m_task_type);
 		this->m_exe_time = std::move(obj.m_exe_time);
 		this->m_exe_str_time = std::move(obj.m_exe_str_time);
+		this->m_task_complete = std::move(obj.m_task_complete);
 		obj.m_exe_path = nullptr;
 
 	}
@@ -165,6 +169,7 @@ namespace scheduler
 			this->m_task_type = std::move(obj.m_task_type);
 			this->m_exe_time = std::move(obj.m_exe_time);
 			this->m_exe_str_time = std::move(obj.m_exe_str_time);
+			this->m_task_complete = std::move(obj.m_task_complete);
 			obj.m_exe_path = nullptr;
 		}
 

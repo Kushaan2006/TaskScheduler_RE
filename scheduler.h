@@ -24,6 +24,7 @@ namespace scheduler
 		void loadTasks();
 		void stop();
 		void listAll();
+		int getTasksSize() { return tasks.size(); }
 		~Sched();
 	};
 }

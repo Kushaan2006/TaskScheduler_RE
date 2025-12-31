@@ -20,9 +20,9 @@ int main()
 		system("cls"); //replace later
 		int sel;
 		cout << "1.) Add Task" << endl;
-		cout << "2.) Exit" << endl;
-		cout << "3.) Exit without Output (Saves task)" << endl;
-		cout << "4.) List All" << endl;
+		cout << "2.) List All" << endl;
+		//cout << "3.) Saves task (Manual)" << endl;
+		cout << "3.) Exit" << endl;
 		cout << "Input: "; cin >> sel;
 		cin.ignore();
 
@@ -43,7 +43,7 @@ int main()
 
 			s.newTask(task_name, task_msg, task_time, type, task_path);
 		}
-		else if (sel == 4)
+		else if (sel == 2)
 		{
 			s.listAll();
 		}
@@ -51,15 +51,19 @@ int main()
 		{
 			break;
 		}
-		else if (sel == 3)
+		/*else if (sel == 3)
 		{
 			s.stop();
+			break;
+		}*/
+		else if( sel == 3 && s.getTasksSize() != 0)
+		{
+			system("cls");
+			cout << "#----TASK CANVAS----#" << endl;
 			break;
 		}
 		else
 		{
-			system("cls");
-			cout << "#----TASK CANVAS----#" << endl;
 			break;
 		}
 	}
