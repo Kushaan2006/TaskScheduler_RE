@@ -59,7 +59,8 @@ int main()
 		else if( sel == 3 && s.getTasksSize() != 0)
 		{
 			system("cls");
-			cout << "#----TASK CANVAS----#" << endl;
+			//dumb implementation, doesnt work, hiding for now
+			/*cout << "#----TASK CANVAS----#" << endl;*/
 			break;
 		}
 		else
