@@ -45,7 +45,7 @@ namespace scheduler
 	//yet to implement, cant delete tasks yet
 	void Sched::listAll()
 	{
-		system("cls");
+		ut.cleanCUI();
 
 
 		while (1)
@@ -127,7 +127,7 @@ namespace scheduler
 			//else
 			//	break;
 
-			//system("cls");
+			//ut.cleanCUI();
 		}
 	}
 

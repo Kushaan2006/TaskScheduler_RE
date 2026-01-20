@@ -26,6 +26,8 @@ namespace scheduler
 
 		bool isLeapYear(const int& yr);
 
+		void cleanCUI();
+
 	};
 
 	extern utils ut;

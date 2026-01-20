@@ -13,6 +13,18 @@
 
 namespace scheduler
 {
+
+	void utils::cleanCUI()
+	{
+		#if defined(_WIN32) || defined(_WIN64)
+		system("cls");
+        #elif defined(__linux__)
+		system("clear");
+        #else
+		cout << std::endl << std::endl;
+        #endif
+	}
+
 	std::chrono::time_point<std::chrono::system_clock>
 		utils::stotp(const std::string& time)
 	{

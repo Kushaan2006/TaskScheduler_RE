@@ -20,10 +20,11 @@ namespace scheduler
 {
 	class Task
 	{
+		std::thread m_t{};
+
 		int m_thread_status{};
 		int m_task_complete{};
 		int m_task_id{};
-		std::thread m_t{};
 
 		std::string m_task_name{};
 		std::string m_task_msg{};

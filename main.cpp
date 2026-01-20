@@ -24,7 +24,7 @@ int main()
 
 	while (1)
 	{
-		system("cls"); //replace later
+		u.cleanCUI(); //replace later
 		int sel;
 		cout << "1.) Add Task" << endl;
 		cout << "2.) List All" << endl;
@@ -35,7 +35,7 @@ int main()
 
 		if (sel == 1)
 		{
-			system("cls"); //replace later
+			u.cleanCUI(); //replace later
 			string task_name, task_msg, task_time, task_path; int type;
 			cout << "Enter Task Name: "; getline(cin, task_name);
 			cout << "Enter Task Msg: "; getline(cin, task_msg);
@@ -75,7 +75,7 @@ int main()
 		}*/
 		else if( sel == 3/* && s.getTasksSize() != 0*/)
 		{
-			system("cls");
+			u.cleanCUI();
 			cout << "EXITING!" << endl;
 			//dumb implementation, doesnt work, hiding for now
 			/*cout << "#----TASK CANVAS----#" << endl;*/
