@@ -20,6 +20,7 @@ int main()
 {
 	thread t;
 	Sched s;
+	utils u;
 
 	while (1)
 	{
@@ -38,7 +39,16 @@ int main()
 			string task_name, task_msg, task_time, task_path; int type;
 			cout << "Enter Task Name: "; getline(cin, task_name);
 			cout << "Enter Task Msg: "; getline(cin, task_msg);
-			cout << "Enter Task Time: "; getline(cin, task_time);
+			
+			do 
+			{
+				cout << "Enter Task Time: "; getline(cin, task_time);
+				if (!u.isTimeValid(task_time))
+					cout << "ERROR: PLEASE ENTER VALID TIME!" << endl;
+			} while (!u.isTimeValid(task_time));
+
+			
+
 			cout << "Enter Task Type: "; cin >> type;
 			cin.ignore();
 			if (type == 2)
@@ -52,6 +62,7 @@ int main()
 		else if (sel == 2)
 		{
 			s.listAll();
+
 		}
 		else if (sel == -1)
 		{
@@ -62,9 +73,10 @@ int main()
 			s.stop();
 			break;
 		}*/
-		else if( sel == 3 && s.getTasksSize() != 0)
+		else if( sel == 3/* && s.getTasksSize() != 0*/)
 		{
 			system("cls");
+			cout << "EXITING!" << endl;
 			//dumb implementation, doesnt work, hiding for now
 			/*cout << "#----TASK CANVAS----#" << endl;*/
 			break;

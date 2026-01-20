@@ -58,7 +58,7 @@ namespace scheduler
 
 			if (this->getTasksSize() == 0)
 			{
-				std::cout << "                   NO TASKS AVAILABLE                  " << std::endl;
+				std::cout << "|                 NO TASKS AVAILABLE                |" << std::endl;
 				std::cout << "+----+----------------+----------------+------------+" << std::endl;
 				getchar();
 				break;

@@ -143,7 +143,7 @@ namespace scheduler
 		setThreadStatus(0);
 	}
 
-	Task::Task(Task&& obj) noexcept
+	/*Task::Task(Task&& obj) noexcept
 	{
 
 		this->m_thread_status = std::move(obj.m_thread_status);
@@ -179,7 +179,7 @@ namespace scheduler
 		}
 
 		return *this;
-	}
+	}*/
 
 
 	Task::~Task()

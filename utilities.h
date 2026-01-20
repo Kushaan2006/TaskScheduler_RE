@@ -16,10 +16,16 @@ namespace scheduler
 	class utils
 	{
 	public:
+
 		std::chrono::time_point<std::chrono::system_clock>
 			stotp(const std::string& time);
 
 		char* stoc(const std::string& str) const;
+
+		bool isTimeValid(const std::string& str);
+
+		bool isLeapYear(const int& yr);
+
 	};
 
 	extern utils ut;
