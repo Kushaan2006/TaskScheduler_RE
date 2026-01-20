@@ -194,7 +194,8 @@ namespace scheduler
 			std::getline(ss, task_type, ',');
 			std::getline(ss, exe_time);
 
-			if (std::stoi(task_complete) != 1)
+			auto currTime = std::chrono::system_clock::now();
+			if (std::stoi(task_complete) != 1 || (ut.stotp(exe_time) < currTime))
 			{
 				int task_time = std::stoi(task_type);
 
