@@ -1,9 +1,36 @@
-TASK SCHEDULER
-This software can be used to schedule tasks, may it be some CUI msgs at a given time, or launching a windows executable such as .exe, .bat, .ps files.
+# TASK SCHEDULER
 
-Accepted format for time: YYYY-MM-DD HH:MM (by default, 10 seconds from time of entry)
+**Platform:** Windows, Linux  
 
-Task Types:
-1.) CUI Messages
-2.) Executables
+This software can be used to schedule tasks, run software executables, or trigger CLI-based notifications.
 
+---
+
+## How to Use
+
+### Creating a New Task
+When creating a new task, enter the following:
+
+- **Task Title** 
+- **Task Message**
+- **Task Time**  
+  Format: `YYYY-MM-DD HH:MM`
+- **Task Type**
+  - `1` → CLI-based notification
+  - `2` → Run a system executable file
+
+After entering the details, submit to create the task.
+
+---
+
+### Viewing All Loaded Tasks
+- Select **"List All"**
+- All currently loaded tasks will be displayed
+- To exit this screen, press **Enter**
+
+---
+
+### Program Exit Behavior
+When exiting the program:
+- The scheduler will first complete any assigned task
+- The program then exits **gracefully**
