@@ -2,7 +2,7 @@
 
 **Platform:** Windows, Linux  
 
-This software can be used to schedule tasks, run software executables, or trigger CLI-based notifications.
+This software can be used to schedule tasks, run software executables, or trigger CLI-based notifications upon time entered.
 
 ---
 
@@ -19,7 +19,7 @@ When creating a new task, enter the following:
   - `1` → CLI-based notification
   - `2` → Run a system executable file
 
-After entering the details, submit to create the task.
+After entering the details, press **"ENTER"** to create the task.
 
 ---
 
