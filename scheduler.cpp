@@ -215,6 +215,11 @@ namespace scheduler
 
 	}
 
+	int Sched::getTasksSize()
+	{ 
+		return static_cast<int>(tasks.size());
+	}
+
 	void Sched::stop()
 	{
 		saveTasks();

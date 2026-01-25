@@ -53,10 +53,10 @@ namespace scheduler
 		/*Task(Task&& obj) noexcept;
 		Task& operator=(Task&& obj) noexcept;*/
 
-		std::string getName() { return m_task_name; }
-		std::string getMsg() { return m_task_msg;  }
-		int getStatus() { return m_task_complete;  }
-		auto getTime() { return m_exe_time;  }
+		std::string getName();
+		std::string getMsg();
+		int getStatus();
+		std::chrono::time_point<std::chrono::system_clock> getTime();
 
 		void setThreadStatus(const int& n = 0);
 

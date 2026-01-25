@@ -64,8 +64,9 @@ namespace scheduler
 			std::cout << "Task Name: " << m_task_name << std::endl;
 			std::cout << "Task Msg : " << m_task_msg << std::endl;
 			std::cout << "Task Type: " << m_task_type << std::endl;
-			std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;
-			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
+			std::cout << "Task Time: " << m_exe_str_time << "UTC" << std::endl;
+			/*std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;*/
+			/*std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;*/
 			std::cout << std::endl;
 		}
 		else if (m_task_type == 2)
@@ -81,9 +82,9 @@ namespace scheduler
 			//std::string cmd = "cmd /c start \"\" \"" + std::string(m_exe_path) + "\"";
 			//system(cmd.c_str());
 
-
-			std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;
-			std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;
+			std::cout << "Task Time: " << m_exe_str_time << "UTC" << std::endl;
+			/*std::cout << "Task Time: " << format("{:%Y-%m-%d %H:%M:%S}", m_exe_time) << std::endl;*/
+			/*std::cout << "EXE  Time: " << format("{:%Y-%m-%d %H:%M:%S}", std::chrono::system_clock::now()) << std::endl;*/
 			std::cout << std::endl;
 		}
 		//yet to implement
@@ -180,6 +181,11 @@ namespace scheduler
 
 		return *this;
 	}*/
+
+	std::string Task::getName() { return m_task_name; }
+	std::string Task::getMsg() { return m_task_msg; }
+	int Task::getStatus() { return m_task_complete; }
+	std::chrono::time_point<std::chrono::system_clock> Task::getTime() { return m_exe_time; }
 
 
 	Task::~Task()
